@@ -2,8 +2,11 @@
 tasks:
   - init: echo 'init script' # runs during prebuild
     command: echo 'start script'
+  - before: |
+      virtualenv venv
+      source activate venv
+      pip install --upgrade pip
+      pip install --upgrade setuptools
+      pip install --upgrade build
+      pip install --upgrade twine
 
-# List the ports to expose. Learn more https://www.gitpod.io/docs/config-ports/
-ports:
-  - port: 3000
-    onOpen: open-preview
